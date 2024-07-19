@@ -21,7 +21,7 @@ public class AccountsService {
 
     @Value("${accounts.url}")
     private String accountsUrl;
-    Logger logger = LoggerFactory.getLogger(this.getClass().getName());//use slf4j with spring.
+    Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
     @Autowired
     RestHelper restHelper;

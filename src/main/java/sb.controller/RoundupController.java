@@ -42,8 +42,9 @@ public class RoundupController {
     public SavingsGoalsService savingsGoalsService;
     @Autowired
     public RoundupService roundupService;
+    @Autowired
+    public ObjectMapper objectMapper;
     private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
-    private final ObjectMapper mapper = new ObjectMapper();
 
     @GetMapping("/getRoundUps/allAccounts")
     public ResponseEntity<String> getRoundupAmountsForAllAccounts() {
@@ -51,14 +52,14 @@ public class RoundupController {
             AccountsList accountsList = accountsService.getAllAccountsForCustomer();
             Map<String, Integer> accountRoundups = roundupService.getAccountRoundups(accountsList);
 
-            String returnString = mapper.writeValueAsString(accountRoundups);
+            String returnString = objectMapper.writeValueAsString(accountRoundups);
             return ResponseEntity.ok(returnString);
         } catch (JsonProcessingException e) {
             logger.debug("Unable to convert the result to json");
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Could not convert to Json");
         } catch (RestApiException e) {
             logger.debug(e.getMessage());
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Could not get details");
         }
     }
 
@@ -87,16 +88,15 @@ public class RoundupController {
                 transferUidList.add(transferUid);
             }
             transferUids.put("TransferUIDs", transferUidList);
-            ObjectMapper mapper = new ObjectMapper();
 
-            return ResponseEntity.ok(mapper.writeValueAsString(transferUids));
+            return ResponseEntity.ok(objectMapper.writeValueAsString(transferUids));
         } catch (SavingsGoalMoneyTransferException | RestApiException e) {
             logger.debug(e.getMessage());
             logger.debug("Money could not be transfered to savings goal");
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Unable to transfer the money to savings goal");
         } catch (JsonProcessingException e) {
             logger.debug("Unable to convert the result to json");
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Json processing error");
         }
     }
 
@@ -111,10 +111,10 @@ public class RoundupController {
                  SavingsGoalMoneyTransferException e) {
             logger.debug(e.getMessage());
             logger.debug("Money could not be transfered to savings goal");
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Could not transfer money");
         } catch (AccountNotFoundException e) {
             logger.debug(e.getMessage());
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Account is not present");
         }
     }
 
