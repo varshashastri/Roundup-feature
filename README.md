@@ -16,4 +16,5 @@ PUT: /transferToSavings/{accountUid}: Transfers roundup amounts in specific acco
 Future code improvements:
 1. Improve tests to cover more negative scenarios especially in util classes.
 2. Improve logging and exception handling and provide more context in the log messages.
+3. Add javadocs to functions in controller and service
 
