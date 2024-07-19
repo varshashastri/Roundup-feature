@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f623d9ce-dcad-4486-af62-211af349c8f9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/sb.application/Application.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/sb.controller/RoundupController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/sb.model/Account.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/sb.model/AccountsList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/sb.model/Amount.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/sb.model/CreateSavingsGoalSuccess.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/sb.model/SavingsGoal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/sb.model/SavingsGoalList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/sb.model/TotalSaved.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/sb.model/Transaction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/sb.model/TransactionsList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/sb.model/TransferToSavingsGoalSuccess.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/sb.service/AccountsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/sb.service/RoundupService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/sb.service/SavingsGoalsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/sb.service/TransactionsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/sb/exception/AccountNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/sb/exception/RestApiException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/sb/exception/SavingsGoalMoneyTransferException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/sb/util/RestHelper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/sb/controller/test/RoundUpControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/sb/service/test/AccountsServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/sb/service/test/RoundUpServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/sb/service/test/SavingsGoalsServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/sb/service/test/TransactionServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/application.properties" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2jHwWjjnDdUzjial2mJJY3lgTMX" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="flattenPackages" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+    <option name="showVisibilityIcons" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Application.executor": "Debug",
+    "JUnit.AccountsServiceTest.executor": "Run",
+    "JUnit.AccountsServiceTest.givenGetAccountIsCalled_whenStarlingAPIThrowsException_ThrowsRestApiException.executor": "Debug",
+    "JUnit.AccountsServiceTest.givenGetAllAccountsIsCalled_whenStarlingApiThrowsException_throwsRestApiException.executor": "Run",
+    "JUnit.AccountsServiceTest.givenInvalidAccountId_whenGetAccountIsCalled_ThrowsException.executor": "Run",
+    "JUnit.AccountsServiceTest.givenvalidAccountId_whenGetAccountIsCalled_ReturnsAccount.executor": "Run",
+    "JUnit.AccountsServiceTest.mytest.executor": "Debug",
+    "JUnit.AccountsServiceTest.whenGetAllAccountsIsCalled_ReturnsAllAccounts.executor": "Run",
+    "JUnit.RoundUpControllerTest.givenGetRoundupsAmountForGivenAccountIsCalled_whenValidInputs_thenroundupsAvailableAreReturned.executor": "Run",
+    "JUnit.RoundUpControllerTest.givenGetRoundupsAmountForGivenAccountIsCalled_whengetAllAccountsForCustomerthrowsException_thenInternalServerError.executor": "Run",
+    "JUnit.RoundUpControllerTest.givenTransferToSavingsForAllAccountsIsCalled_WhenCantCreateSavingsGoal_thenthrowsInternalServerError.executor": "Run",
+    "JUnit.RoundUpControllerTest.givenTransferToSavingsForAllAccountsIsCalled_WhenCantTransferAmount_thenThrowsInternalServerError.executor": "Run",
+    "JUnit.RoundUpControllerTest.givenTransferToSavingsForAllAccountsIsCalled_WhenValidInputs_thenreturnsAccountroundups.executor": "Run",
+    "JUnit.RoundUpControllerTest.givenTransferToSavingsForAllAccountsIsCalled_WhencantgetAccountRoundups_thenthrowsInternalServerError.executor": "Run",
+    "JUnit.RoundUpControllerTest.givenTransferToSavingsForGivenAccountIsCalled_WhenAccountNotPresent_thenthrowsException.executor": "Run",
+    "JUnit.RoundUpControllerTest.givenTransferToSavingsForGivenAccountIsCalled_WhenAccountRoundupFails_thenthrowsInternalError.executor": "Run",
+    "JUnit.RoundUpControllerTest.givenTransferToSavingsForGivenAccountIsCalled_WhenCannotGetSavingsGoal_thenthrowsInternalError.executor": "Run",
+    "JUnit.RoundUpControllerTest.givenTransferToSavingsForGivenAccountIsCalled_WhenCannotTransferAmount_thenthrowsInternalErro.executor": "Run",
+    "JUnit.RoundUpControllerTest.givenTransferToSavingsForGivenAccountIsCalled_WhenCannotTransferAmount_thenthrowsInternalError.executor": "Run",
+    "JUnit.RoundUpControllerTest.givenTransferToSavingsForGivenAccountIsCalled_WhenValidInputs_thenTransferIsSuccessful.executor": "Run",
+    "JUnit.RoundUpControllerTest.givengetRoundupsAmountForGivenAccountIsCalled_whenExceptionIsThrown_thenInternalServerError.executor": "Run",
+    "JUnit.RoundUpControllerTest.givengetRoundupsAmountForGivenAccountIsCalled_whenValidInputs_thenroundupsAvailableAreReturned.executor": "Run",
+    "JUnit.RoundUpServiceTest.basictestTocheck.executor": "Run",
+    "JUnit.RoundUpServiceTest.executor": "Run",
+    "JUnit.RoundUpServiceTest.givengetAccountRoundUpIsCalled_whenstarlingApiThrowsException_thenRestApiExceptionIsThrown.executor": "Run",
+    "JUnit.RoundUpServiceTest.givengetAccountRoundupsIsCalled_whenStarlingApiThrowsError_TheRestApiErrorIsThrown.executor": "Run",
+    "JUnit.RoundUpServiceTest.givengetgetAccountRoundupsIsCalled_whenValidAccountList_thenReturnCorrectRoundUp.executor": "Run",
+    "JUnit.RoundUpServiceTest.givengetgetRoundUpMinorUnitsIsCalled_whenNoTransactions_thenReturnZero.executor": "Run",
+    "JUnit.RoundUpServiceTest.givengetgetRoundUpMinorUnitsIsCalled_whenValidTransactions_thenReturnCorrectRoundUp.executor": "Run",
+    "JUnit.SavingsGoalsServiceTest.executor": "Coverage",
+    "JUnit.SavingsGoalsServiceTest.givenStarlingApiThrowsError_whentransferAmountsToSavingsCalled_ThrowsCustomException.executor": "Run",
+    "JUnit.SavingsGoalsServiceTest.givengetOrCreateSavingsGoalIsCalled_whenSavingsGoalsIsPresentAndCouldntBeRetrieved_throwsRestApiException.executor": "Run",
+    "JUnit.SavingsGoalsServiceTest.givengetOrCreateSavingsGoalIsCalled_whenSavingsGoalsIsPresent_returnsExistingSavingsGoalUid.executor": "Run",
+    "JUnit.SavingsGoalsServiceTest.givengetOrCreateSavingsGoalIsCalled_whenSavingsGoalsIsntPresentAndCouldntBeCreated_throwsRestApiException.executor": "Run",
+    "JUnit.SavingsGoalsServiceTest.givengetOrCreateSavingsGoalIsCalled_whenSavingsGoalsIsntPresent_returnsNewSavingsGoalUid.executor": "Run",
+    "JUnit.SavingsGoalsServiceTest.giventransferAmountsToSavingsCalled_whentransferFails_ThrowsCustomException.executor": "Run",
+    "JUnit.SavingsGoalsServiceTest.giventransferAmountsToSavingsCalled_whentransferFails_checing.executor": "Run",
+    "JUnit.SavingsGoalsServiceTest.giventransferAmountsToSavingsCalled_whentransferFails_checking.executor": "Run",
+    "JUnit.SavingsGoalsServiceTest.givenvalidInputs_transferAmountToSavingsGoal_returnsTransferId.executor": "Run",
+    "JUnit.TransactionServiceTest.basicTesttoStart.executor": "Run",
+    "JUnit.TransactionServiceTest.givenGetAllTransactionsForAccountCalled_whenStarlingApiDoesnotwork_thenRestApiExceptionIsThrown.executor": "Run",
+    "JUnit.java in SB.executor": "Coverage",
+    "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/varshashastri/Downloads/SB/src/test/resources",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/test/resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/main/src/main" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="sb.service.test" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.RoundUpControllerTest.givengetRoundupsAmountForGivenAccountIsCalled_whenExceptionIsThrown_thenInternalServerError">
+    <configuration name="RoundUpControllerTest.givenGetRoundupsAmountForGivenAccountIsCalled_whenValidInputs_thenroundupsAvailableAreReturned" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SB" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="sb.controller.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="sb.controller.test" />
+      <option name="MAIN_CLASS_NAME" value="sb.controller.test.RoundUpControllerTest" />
+      <option name="METHOD_NAME" value="givenGetRoundupsAmountForGivenAccountIsCalled_whenValidInputs_thenroundupsAvailableAreReturned" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RoundUpControllerTest.givenGetRoundupsAmountForGivenAccountIsCalled_whengetAllAccountsForCustomerthrowsException_thenInternalServerError" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SB" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="sb.controller.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="sb.controller.test" />
+      <option name="MAIN_CLASS_NAME" value="sb.controller.test.RoundUpControllerTest" />
+      <option name="METHOD_NAME" value="givenGetRoundupsAmountForGivenAccountIsCalled_whengetAllAccountsForCustomerthrowsException_thenInternalServerError" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RoundUpControllerTest.givengetRoundupsAmountForGivenAccountIsCalled_whenExceptionIsThrown_thenInternalServerError" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SB" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="sb.controller.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="sb.controller.test" />
+      <option name="MAIN_CLASS_NAME" value="sb.controller.test.RoundUpControllerTest" />
+      <option name="METHOD_NAME" value="givengetRoundupsAmountForGivenAccountIsCalled_whenExceptionIsThrown_thenInternalServerError" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RoundUpControllerTest.givengetRoundupsAmountForGivenAccountIsCalled_whenValidInputs_thenroundupsAvailableAreReturned" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SB" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="sb.controller.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="sb.controller.test" />
+      <option name="MAIN_CLASS_NAME" value="sb.controller.test.RoundUpControllerTest" />
+      <option name="METHOD_NAME" value="givengetRoundupsAmountForGivenAccountIsCalled_whenValidInputs_thenroundupsAvailableAreReturned" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="java in SB" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SB" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/src/test/java" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.RoundUpControllerTest.givengetRoundupsAmountForGivenAccountIsCalled_whenExceptionIsThrown_thenInternalServerError" />
+        <item itemvalue="JUnit.java in SB" />
+        <item itemvalue="JUnit.RoundUpControllerTest.givengetRoundupsAmountForGivenAccountIsCalled_whenValidInputs_thenroundupsAvailableAreReturned" />
+        <item itemvalue="JUnit.RoundUpControllerTest.givenGetRoundupsAmountForGivenAccountIsCalled_whengetAllAccountsForCustomerthrowsException_thenInternalServerError" />
+        <item itemvalue="JUnit.RoundUpControllerTest.givenGetRoundupsAmountForGivenAccountIsCalled_whenValidInputs_thenroundupsAvailableAreReturned" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f623d9ce-dcad-4486-af62-211af349c8f9" name="Changes" comment="" />
+      <created>1721057344697</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1721057344697</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/6.1.5/spring-web-6.1.5.jar!/org/springframework/web/client/RestTemplate.class</url>
+          <line>511</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/6.1.5/spring-web-6.1.5.jar!/org/springframework/web/client/RestTemplate.class</url>
+          <line>491</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/6.1.5/spring-web-6.1.5.jar!/org/springframework/web/util/DefaultUriBuilderFactory.class</url>
+          <line>257</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/6.1.5/spring-web-6.1.5.jar!/org/springframework/web/util/UriComponents.class</url>
+          <line>72</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/sb.service/SavingsGoalsService.java</url>
+          <line>50</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/sb.controller/RoundupController.java</url>
+          <line>50</line>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/sb.service/AccountsService.java</url>
+          <line>32</line>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/sb.service/AccountsService.java</url>
+          <line>40</line>
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/sb.controller/RoundupController.java</url>
+          <line>105</line>
+          <option name="timeStamp" value="42" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/SB$java_in_SB.ic" NAME="java in SB Coverage Results" MODIFIED="1721380302519" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/SB$SavingsGoalsServiceTest.ic" NAME="SavingsGoalsServiceTest Coverage Results" MODIFIED="1721314513799" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>sb.service.test.*</FILTER>
+    </SUITE>
+  </component>
+</project>
