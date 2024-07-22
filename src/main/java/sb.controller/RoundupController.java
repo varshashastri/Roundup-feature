@@ -3,6 +3,7 @@ package sb.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.NonNull;
+import org.springframework.beans.factory.annotation.Value;
 import sb.exception.AccountNotFoundException;
 import sb.exception.RestApiException;
 import sb.exception.SavingsGoalMoneyTransferException;
@@ -19,11 +20,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import sb.model.Account;
 import sb.model.AccountsList;
 import sb.model.SavingsGoal;
-import sb.model.TransactionsList;
 import sb.service.AccountsService;
 import sb.service.RoundupService;
 import sb.service.SavingsGoalsService;
-import sb.service.TransactionsService;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,8 +33,10 @@ import java.util.Map;
 @RequestMapping("/roundup")
 public class RoundupController {
 
-    public static final String SAVINGS_GOAL_NAME_PREFIX = "SavingsGoal";
-    public static final String GBP_CURRENCY = "GBP";
+    @Value("${savings.goal.name.prefix}")
+    private String savingsGoalNamePrefix;
+    @Value("${gbp.currency}")
+    private String gbpCurrency;
     @Autowired
     private AccountsService accountsService;
     @Autowired
@@ -118,7 +119,7 @@ public class RoundupController {
     }
 
     private String transferMoneyToSavings(@NonNull final String accountUid, @NonNull final Integer accountRoundup) throws SavingsGoalMoneyTransferException, RestApiException {
-        final String savingsGoalUid = savingsGoalsService.getOrCreateSavingsGoal(accountUid, SavingsGoal.builder().name(SAVINGS_GOAL_NAME_PREFIX + accountUid).currency(GBP_CURRENCY).build());
+        final String savingsGoalUid = savingsGoalsService.getOrCreateSavingsGoal(accountUid, SavingsGoal.builder().name(savingsGoalNamePrefix + accountUid).currency(gbpCurrency).build());
         return savingsGoalsService.transferAmountToSavingsGoal(accountUid, savingsGoalUid, accountRoundup);
     }
 }
