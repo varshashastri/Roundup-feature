@@ -24,7 +24,7 @@ public class SavingsGoalsService {
 
     public static final String AMOUNT = "amount";
     public static final String GBP = "GBP";
-    Logger logger = LoggerFactory.getLogger(this.getClass().getName());//use slf4j with spring.
+    private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());//use slf4j with spring.
 
     @Value("${savings.goals.url.prefix}")
     private String savingsGoalsUrlPrefix;
