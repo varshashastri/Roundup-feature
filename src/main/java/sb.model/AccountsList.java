@@ -15,8 +15,4 @@ public class AccountsList {
     @JsonProperty
     List<Account> accounts;
 
-    public List<Account> getAccounts() {
-        return accounts;
-    }
-
 }
