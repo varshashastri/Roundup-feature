@@ -10,9 +10,11 @@
 3. PUT: /transferToSavings/all: Transfers roundup amounts in all accounts to respective savings goal 
 4. PUT: /transferToSavings/{accountUid}: Transfers roundup amounts in specific account of the customer to the savings goal associated with that account.
 
+**Code coverage:**
+89% line coverage
+
 **Future code improvements:**
 
 1. Improve tests to cover more negative scenarios especially in util classes.
 2. Improve logging and exception handling and provide more context in the log messages.
 3. Add javadocs.
-4. Improve dependency injection by moving mapper etc to bean.

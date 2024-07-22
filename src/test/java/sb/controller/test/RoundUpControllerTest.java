@@ -1,5 +1,7 @@
 package sb.controller.test;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,7 +11,9 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import sb.beans.ObjectMapperProvider;
 import sb.controller.RoundupController;
 import sb.exception.AccountNotFoundException;
 import sb.exception.RestApiException;
@@ -18,7 +22,6 @@ import sb.model.*;
 import sb.service.AccountsService;
 import sb.service.RoundupService;
 import sb.service.SavingsGoalsService;
-import sb.service.TransactionsService;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -40,6 +43,9 @@ public class RoundUpControllerTest {
     @Autowired
     @Mock
     public RoundupService roundupService;
+    @Autowired
+    @Mock
+    ObjectMapper objectMapper;
     @InjectMocks
     @Autowired
     private RoundupController roundupController;
@@ -104,16 +110,31 @@ public class RoundUpControllerTest {
     }
 
     @Test
-    public void givenTransferToSavingsForAllAccountsIsCalled_WhenValidInputs_thenreturnsAccountroundups() throws RestApiException, SavingsGoalMoneyTransferException {
+    public void givenTransferToSavingsForAllAccountsIsCalled_WhenValidInputs_thenreturnsAccountroundups() throws RestApiException, SavingsGoalMoneyTransferException, JsonProcessingException {
         Map<String, Integer> accountRoundups = new HashMap<>();
         accountRoundups.put("test", 1);
         String expectedString = "{\"TransferUIDs\":[\"transferUid\"]}";
         when(roundupService.getAccountRoundups(any())).thenReturn(accountRoundups);
         when(savingsGoalsService.getOrCreateSavingsGoal(any(), any())).thenReturn("transferUid");
         when(savingsGoalsService.transferAmountToSavingsGoal(any(), any(), any())).thenReturn("transferUid");
+        when(objectMapper.writeValueAsString(any())).thenReturn(expectedString);
 
         ResponseEntity<String> response = roundupController.transferToSavingsForAllAccounts();
         Assert.assertEquals(expectedString, response.getBody());
+    }
+
+    @Test
+    public void givenTransferToSavingsForAllAccountsIsCalled_WhenInValidInputs_thenInternalServerError() throws RestApiException, SavingsGoalMoneyTransferException, JsonProcessingException {
+        Map<String, Integer> accountRoundups = new HashMap<>();
+        accountRoundups.put("test", 1);
+        String expectedString = "{\"TransferUIDs\":[\"transferUid\"]}";
+        when(roundupService.getAccountRoundups(any())).thenReturn(accountRoundups);
+        when(savingsGoalsService.getOrCreateSavingsGoal(any(), any())).thenReturn("transferUid");
+        when(savingsGoalsService.transferAmountToSavingsGoal(any(), any(), any())).thenReturn("transferUid");
+        when(objectMapper.writeValueAsString(any())).thenThrow(new JsonProcessingException(""){});
+
+        ResponseEntity<String> response = roundupController.transferToSavingsForAllAccounts();
+        Assert.assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
     }
 
     @Test
@@ -152,7 +173,7 @@ public class RoundUpControllerTest {
     }
 
     @Test
-    public void givenGetRoundupsAmountForAllAccountIsCalled_whenValidInputs_thenroundupsAvailableAreReturned() throws RestApiException {
+    public void givenGetRoundupsAmountForAllAccountIsCalled_whenValidInputs_thenroundupsAvailableAreReturned() throws RestApiException, JsonProcessingException {
         List<Account> accountList = new ArrayList<>();
         String expectedResult = "{\"accountUID2\":1}";
         accountList.add(Account.builder().accountUid("accountUID2").accountType("type").currency("GBP").build());
@@ -161,8 +182,24 @@ public class RoundUpControllerTest {
         accountRoundups.put("accountUID2", 1);
         when(accountsService.getAllAccountsForCustomer()).thenReturn(accountsList);
         when(roundupService.getAccountRoundups(accountsList)).thenReturn(accountRoundups);
+        when(objectMapper.writeValueAsString(any())).thenReturn((new ObjectMapper()).writeValueAsString(accountRoundups));
         ResponseEntity<String> result = roundupController.getRoundupAmountsForAllAccounts();
         Assert.assertEquals(expectedResult, result.getBody());
+    }
+
+    @Test
+    public void givenGetRoundupsAmountForAllAccountIsCalled_whenInValidInputs_thenThrowsInternalServerError() throws RestApiException, JsonProcessingException {
+        List<Account> accountList = new ArrayList<>();
+        String expectedResult = "{\"accountUID2\":1}";
+        accountList.add(Account.builder().accountUid("accountUID2").accountType("type").currency("GBP").build());
+        AccountsList accountsList = new AccountsList(accountList);
+        Map<String, Integer> accountRoundups = new HashMap<>();
+        accountRoundups.put("accountUID2", 1);
+        when(accountsService.getAllAccountsForCustomer()).thenReturn(accountsList);
+        when(roundupService.getAccountRoundups(accountsList)).thenReturn(accountRoundups);
+        when(objectMapper.writeValueAsString(any())).thenThrow(new JsonProcessingException("test"){});
+        ResponseEntity<String> result = roundupController.getRoundupAmountsForAllAccounts();
+        Assert.assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, result.getStatusCode());
     }
     @Test
     public void givenGetRoundupsAmountForGivenAccountIsCalled_whengetAllAccountsForCustomerthrowsException_thenInternalServerError() throws RestApiException {
