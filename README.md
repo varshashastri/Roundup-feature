@@ -19,3 +19,4 @@ Uses java 21. Import as maven project in any IDE and run as Spring boot applicat
 1. Improve tests to cover more negative scenarios especially in util classes.
 2. Improve logging and exception handling and provide more context in the log messages.
 3. Add javadocs.
+4. move all inline strings to application. properties or as constants.
