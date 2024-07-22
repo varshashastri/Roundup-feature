@@ -2,7 +2,8 @@
 
 **Project description:** The Roundup Service API provides endpoints for calculating and retrieving roundup amounts for customer accounts and then transfering the roundup amounts into savings goal space. For simplicity in this project we assume there is one savings goal per account. Each customer can have multiple accounts and each account can have one savings space.
 
-**How to run it locally:** Uses java 21. Import as maven project in any IDE and run as Spring boot application.
+**How to run it locally:** 
+Uses java 21. Import as maven project in any IDE and run as Spring boot application.
 
 **Endpoints:** 
 1. GET: /getRoundUps/allAccounts: Retrieves roundup amounts for all customer accounts. 
