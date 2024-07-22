@@ -15,12 +15,4 @@ public class Amount {
     String currency;
     @JsonProperty
     int minorUnits;
-
-    public int getMinorUnits() {
-        return minorUnits;
-    }
-
-    public String getCurrency() {
-        return currency;
-    }
 }
