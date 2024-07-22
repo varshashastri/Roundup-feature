@@ -31,12 +31,12 @@ public class RestHelper {
         return new HttpEntity<>(body, httpHeaders);
     }
 
-    public <T,S> ResponseEntity<S> performPut(@NonNull String url, T body, @NonNull Class<S> clazz) {
+    public <T,S> ResponseEntity<S> performPut(@NonNull final String url, @NonNull final T body, @NonNull final Class<S> clazz) {
         HttpEntity<T> entity = getHttpEntityWithRequestBodyAndHeaders(body);
         return restTemplate.exchange(url, HttpMethod.PUT, entity, clazz);
     }
 
-    public <T,S> ResponseEntity<S> performGet(@NonNull final String url, @NonNull Class<S> clazz) {
+    public <T,S> ResponseEntity<S> performGet(@NonNull final String url, @NonNull final Class<S> clazz) {
         HttpEntity<T> entity = getHttpEntityWithHeaders();
         return restTemplate.exchange(url, HttpMethod.GET, entity, clazz);
     }
