@@ -15,4 +15,3 @@
 1. Improve tests to cover more negative scenarios especially in util classes.
 2. Improve logging and exception handling and provide more context in the log messages.
 3. Add javadocs.
-4. Improve dependency injection by moving mapper etc to bean.
