@@ -77,9 +77,8 @@ public class RoundupController {
 
     @PutMapping("/transferToSavings/all")
     public ResponseEntity<String> transferToSavingsForAllAccounts() {
-        AccountsList accountsList;
         try {
-            accountsList = accountsService.getAllAccountsForCustomer();
+            AccountsList accountsList = accountsService.getAllAccountsForCustomer();
             Map<String, Integer> accountRoundups = roundupService.getAccountRoundups(accountsList);
             Map<String, List<String>> transferUids = new HashMap<>();
             List<String> transferUidList = new ArrayList<>();
