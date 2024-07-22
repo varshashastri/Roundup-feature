@@ -25,7 +25,7 @@ public class RestHelper {
         return new HttpEntity<>(httpHeaders);
     }
 
-    public <T> HttpEntity<T> getHttpEntityWithRequestBodyAndHeaders(@NonNull T body) {
+    public <T> HttpEntity<T> getHttpEntityWithRequestBodyAndHeaders(@NonNull final T body) {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add("Authorization", "Bearer " + token);
         return new HttpEntity<>(body, httpHeaders);
