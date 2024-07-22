@@ -21,10 +21,10 @@ public class AccountsService {
 
     @Value("${accounts.url}")
     private String accountsUrl;
-    Logger logger = LoggerFactory.getLogger(this.getClass().getName());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
     @Autowired
-    RestHelper restHelper;
+    private RestHelper restHelper;
 
     public AccountsList getAllAccountsForCustomer() throws RestApiException {
         try {
