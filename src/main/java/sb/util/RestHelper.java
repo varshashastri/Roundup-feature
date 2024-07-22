@@ -20,24 +20,24 @@ public class RestHelper {
     private RestTemplate restTemplate;
 
     public <T> HttpEntity<T> getHttpEntityWithHeaders() {
-        HttpHeaders httpHeaders = new HttpHeaders();
+        final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add("Authorization", "Bearer " + token);
         return new HttpEntity<>(httpHeaders);
     }
 
     public <T> HttpEntity<T> getHttpEntityWithRequestBodyAndHeaders(@NonNull final T body) {
-        HttpHeaders httpHeaders = new HttpHeaders();
+        final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add("Authorization", "Bearer " + token);
         return new HttpEntity<>(body, httpHeaders);
     }
 
-    public <T,S> ResponseEntity<S> performPut(@NonNull String url, T body, @NonNull Class<S> clazz) {
-        HttpEntity<T> entity = getHttpEntityWithRequestBodyAndHeaders(body);
+    public <T,S> ResponseEntity<S> performPut(@NonNull final String url, @NonNull final T body, @NonNull final Class<S> clazz) {
+        final HttpEntity<T> entity = getHttpEntityWithRequestBodyAndHeaders(body);
         return restTemplate.exchange(url, HttpMethod.PUT, entity, clazz);
     }
 
-    public <T,S> ResponseEntity<S> performGet(@NonNull final String url, @NonNull Class<S> clazz) {
-        HttpEntity<T> entity = getHttpEntityWithHeaders();
+    public <T,S> ResponseEntity<S> performGet(@NonNull final String url, @NonNull final Class<S> clazz) {
+        final HttpEntity<T> entity = getHttpEntityWithHeaders();
         return restTemplate.exchange(url, HttpMethod.GET, entity, clazz);
     }
 }

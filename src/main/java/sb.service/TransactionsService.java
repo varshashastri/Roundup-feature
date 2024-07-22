@@ -34,9 +34,9 @@ public class TransactionsService {
 
     public TransactionsList getAllTransactionsForAccount(@NonNull final String accountUid, @NonNull final String accountDefaultCategory) throws RestApiException {
         try {
-            String customFormattedDateNow = LocalDateTime.now().format(customPattern);
-            String customFormattedDateLastWeek = LocalDateTime.now().minusWeeks(1).format(customPattern);
-            String url = transactionsUrlPrefix + accountUid + "/category/" + accountDefaultCategory + "/transactions-between?minTransactionTimestamp="+customFormattedDateLastWeek+"&maxTransactionTimestamp="+customFormattedDateNow;
+            final String customFormattedDateNow = LocalDateTime.now().format(customPattern);
+            final String customFormattedDateLastWeek = LocalDateTime.now().minusWeeks(1).format(customPattern);
+            final String url = transactionsUrlPrefix + accountUid + "/category/" + accountDefaultCategory + "/transactions-between?minTransactionTimestamp="+customFormattedDateLastWeek+"&maxTransactionTimestamp="+customFormattedDateNow;
             return restHelper.performGet(url, TransactionsList.class).getBody();
         } catch (RestClientException ex) {
             logger.error("savings goal couldn't be created" + ex.getMessage());

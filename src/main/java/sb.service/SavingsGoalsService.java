@@ -22,9 +22,9 @@ import java.util.*;
 @Service
 public class SavingsGoalsService {
 
-    public static final String AMOUNT = "amount";
-    public static final String GBP = "GBP";
-    private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());//use slf4j with spring.
+    private static final String AMOUNT = "amount";
+    private static final String GBP = "GBP";//move to properties
+    private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
     @Value("${savings.goals.url.prefix}")
     private String savingsGoalsUrlPrefix;
@@ -38,13 +38,12 @@ public class SavingsGoalsService {
     @Autowired
     private RestHelper restHelper;
 
-    //TBD: use personal laptop to use lombok and upload to git
     public String transferAmountToSavingsGoal(@NonNull final String accountUid, @NonNull final String savingsGoalUid, final Integer amountMinorUnits) throws SavingsGoalMoneyTransferException, RestApiException {
         try {
-            Map<String, Amount> amount = new HashMap<>();
+            final Map<String, Amount> amount = new HashMap<>();
             amount.put(AMOUNT, new Amount(GBP, amountMinorUnits));
-            String url = savingsGoalsUrlPrefix + accountUid + savingsGoalsSuffix + savingsGoalUid + addMoneySuffix + UUID.randomUUID();
-            TransferToSavingsGoalSuccess transferToSavingsGoalSuccess = restHelper.performPut(url, amount, TransferToSavingsGoalSuccess.class).getBody();
+            final String url = savingsGoalsUrlPrefix + accountUid + savingsGoalsSuffix + savingsGoalUid + addMoneySuffix + UUID.randomUUID();
+            final TransferToSavingsGoalSuccess transferToSavingsGoalSuccess = restHelper.performPut(url, amount, TransferToSavingsGoalSuccess.class).getBody();
             if (transferToSavingsGoalSuccess != null && transferToSavingsGoalSuccess.isSuccess()) {
                 return transferToSavingsGoalSuccess.getTransferUid();
             } else {
@@ -57,10 +56,9 @@ public class SavingsGoalsService {
     }
 
     public String getOrCreateSavingsGoal(@NonNull final String accountUid, @NonNull final SavingsGoal savingsGoal) throws RestApiException {
-        SavingsGoalList savingsGoals;
         logger.debug("Checking if savings goal" + savingsGoal.getName() + " is present");
-        savingsGoals = getExistingSavingsGoalList(accountUid);
-        Optional<SavingsGoal> savingsGoalOptional = Optional.ofNullable(savingsGoals)
+        final SavingsGoalList savingsGoals = getExistingSavingsGoalList(accountUid);
+        final Optional<SavingsGoal> savingsGoalOptional = Optional.ofNullable(savingsGoals)
                 .map(SavingsGoalList::getSavingsGoalList)
                 .flatMap(savingsGoals1 -> savingsGoals1.stream()
                         .filter(savingsGoal1 -> savingsGoal1.getName().equals(savingsGoal.getName()))
@@ -75,8 +73,8 @@ public class SavingsGoalsService {
 
     private String createNewSavingsGoal(@NonNull final String accountUid, @NonNull final SavingsGoal savingsGoal) throws RestApiException {
         try {
-            String url = savingsGoalsUrlPrefix + accountUid + savingsGoalsSuffix;
-            CreateSavingsGoalSuccess savingsGoalReturn = restHelper.performPut(url, savingsGoal, CreateSavingsGoalSuccess.class).getBody();
+            final String url = savingsGoalsUrlPrefix + accountUid + savingsGoalsSuffix;
+            final CreateSavingsGoalSuccess savingsGoalReturn = restHelper.performPut(url, savingsGoal, CreateSavingsGoalSuccess.class).getBody();
             if (savingsGoalReturn != null && savingsGoalReturn.isSuccess()) {
                 return savingsGoalReturn.getSavingsGoalUid();
             } else {
@@ -90,9 +88,9 @@ public class SavingsGoalsService {
     }
 
     private SavingsGoalList getExistingSavingsGoalList(@NonNull final String accountUid) throws RestApiException {
-        SavingsGoalList savingsGoals;
+        final SavingsGoalList savingsGoals;
         try {
-            String url = savingsGoalsUrlPrefix + accountUid + savingsGoalsSuffix;
+            final String url = savingsGoalsUrlPrefix + accountUid + savingsGoalsSuffix;
             savingsGoals = restHelper.performGet(url, SavingsGoalList.class).getBody();
         } catch (RestClientException ex) {
             logger.error("savings goals couldn't be retrieved" + ex.getMessage());

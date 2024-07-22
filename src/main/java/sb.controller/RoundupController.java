@@ -37,22 +37,22 @@ public class RoundupController {
     public static final String SAVINGS_GOAL_NAME_PREFIX = "SavingsGoal";
     public static final String GBP_CURRENCY = "GBP";
     @Autowired
-    public AccountsService accountsService;
+    private AccountsService accountsService;
     @Autowired
-    public SavingsGoalsService savingsGoalsService;
+    private SavingsGoalsService savingsGoalsService;
     @Autowired
-    public RoundupService roundupService;
+    private RoundupService roundupService;
     @Autowired
-    public ObjectMapper objectMapper;
+    private ObjectMapper objectMapper;
     private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
     @GetMapping("/getRoundUps/allAccounts")
     public ResponseEntity<String> getRoundupAmountsForAllAccounts() {
         try {
-            AccountsList accountsList = accountsService.getAllAccountsForCustomer();
-            Map<String, Integer> accountRoundups = roundupService.getAccountRoundups(accountsList);
+            final AccountsList accountsList = accountsService.getAllAccountsForCustomer();
+            final Map<String, Integer> accountRoundups = roundupService.getAccountRoundups(accountsList);
 
-            String returnString = objectMapper.writeValueAsString(accountRoundups);
+            final String returnString = objectMapper.writeValueAsString(accountRoundups);
             return ResponseEntity.ok(returnString);
         } catch (JsonProcessingException e) {
             logger.debug("Unable to convert the result to json");
@@ -66,7 +66,7 @@ public class RoundupController {
     @GetMapping("/getRoundUps/{accountUid}")
     public ResponseEntity<Integer> getRoundupsAmountForGivenAccount(@PathVariable("accountUid") final String accountUid) {
         try {
-            Account account = accountsService.getAccount(accountUid);
+            final Account account = accountsService.getAccount(accountUid);
             return ResponseEntity.ok(roundupService.getAccountRoundUp(account.getAccountUid(), account.getDefaultCategory()));
         } catch (RestApiException | AccountNotFoundException e) {
             logger.debug(e.getMessage());
@@ -78,12 +78,12 @@ public class RoundupController {
     @PutMapping("/transferToSavings/all")
     public ResponseEntity<String> transferToSavingsForAllAccounts() {
         try {
-            AccountsList accountsList = accountsService.getAllAccountsForCustomer();
-            Map<String, Integer> accountRoundups = roundupService.getAccountRoundups(accountsList);
-            Map<String, List<String>> transferUids = new HashMap<>();
-            List<String> transferUidList = new ArrayList<>();
+            final AccountsList accountsList = accountsService.getAllAccountsForCustomer();
+            final Map<String, Integer> accountRoundups = roundupService.getAccountRoundups(accountsList);
+            final Map<String, List<String>> transferUids = new HashMap<>();
+            final List<String> transferUidList = new ArrayList<>();
             for (String accountUid : accountRoundups.keySet()) {
-                String transferUid = transferMoneyToSavings(accountUid, accountRoundups.get(accountUid));
+                final String transferUid = transferMoneyToSavings(accountUid, accountRoundups.get(accountUid));
                 transferUidList.add(transferUid);
             }
             transferUids.put("TransferUIDs", transferUidList);
@@ -102,9 +102,9 @@ public class RoundupController {
     @PutMapping("/transferToSavings/{accountUid}")
     public ResponseEntity<String> transferToSavingsForGivenAccount(@PathVariable("accountUid") final String accountUid) {
         try {
-            Account account = accountsService.getAccount(accountUid);
-            Integer roundUp = roundupService.getAccountRoundUp(account.getAccountUid(), account.getDefaultCategory());
-            String transferUid = transferMoneyToSavings(accountUid, roundUp);
+            final Account account = accountsService.getAccount(accountUid);
+            final Integer roundUp = roundupService.getAccountRoundUp(account.getAccountUid(), account.getDefaultCategory());
+            final String transferUid = transferMoneyToSavings(accountUid, roundUp);
             return ResponseEntity.ok(transferUid);
         } catch (RestApiException |
                  SavingsGoalMoneyTransferException e) {
@@ -118,7 +118,7 @@ public class RoundupController {
     }
 
     private String transferMoneyToSavings(@NonNull final String accountUid, @NonNull final Integer accountRoundup) throws SavingsGoalMoneyTransferException, RestApiException {
-        String savingsGoalUid = savingsGoalsService.getOrCreateSavingsGoal(accountUid, SavingsGoal.builder().name(SAVINGS_GOAL_NAME_PREFIX + accountUid).currency(GBP_CURRENCY).build());
+        final String savingsGoalUid = savingsGoalsService.getOrCreateSavingsGoal(accountUid, SavingsGoal.builder().name(SAVINGS_GOAL_NAME_PREFIX + accountUid).currency(GBP_CURRENCY).build());
         return savingsGoalsService.transferAmountToSavingsGoal(accountUid, savingsGoalUid, accountRoundup);
     }
 }

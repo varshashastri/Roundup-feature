@@ -19,9 +19,9 @@ public class RoundupService {
     private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
     @Autowired
-    public TransactionsService transactionsService;
+    private TransactionsService transactionsService;
     @Autowired
-    public SavingsGoalsService savingsGoalsService;
+    private SavingsGoalsService savingsGoalsService;
 
     public Integer getRoundUpMinorUnits(@NonNull final TransactionsList transactionsList) {
         return Optional.of(transactionsList)
@@ -34,11 +34,11 @@ public class RoundupService {
     }
 
     public Map<String, Integer> getAccountRoundups(@NonNull final AccountsList accountsList) throws RestApiException {
-        Map<String, Integer> accountRoundups = new HashMap<>();
-        Optional<List<Account>> accounts = Optional.of(accountsList).map(AccountsList::getAccounts);
+        final Map<String, Integer> accountRoundups = new HashMap<>();
+        final Optional<List<Account>> accounts = Optional.of(accountsList).map(AccountsList::getAccounts);
         if (accounts.isPresent()) {
-            for (Account account : accounts.get()) {
-                int roundUpMinorUnits = getAccountRoundUp(account.getAccountUid(), account.getDefaultCategory());
+            for (final Account account : accounts.get()) {
+                final int roundUpMinorUnits = getAccountRoundUp(account.getAccountUid(), account.getDefaultCategory());
                 accountRoundups.put(account.getAccountUid(), roundUpMinorUnits);
             }
             return accountRoundups;

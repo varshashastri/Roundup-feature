@@ -37,8 +37,8 @@ public class AccountsService {
     }
 
     public Account getAccount(@NonNull final String accountUid) throws RestApiException, AccountNotFoundException {
-        AccountsList accountsList = getAllAccountsForCustomer();
-        Optional<Account> accountOptional = accountsList.getAccounts()
+        final AccountsList accountsList = getAllAccountsForCustomer();
+        final Optional<Account> accountOptional = accountsList.getAccounts()
                 .stream()
                 .filter(account -> account.getAccountUid().equals(accountUid))
                 .findFirst();
