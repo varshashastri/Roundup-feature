@@ -18,8 +18,6 @@ import java.util.Arrays;
 
 @Service
 public class TransactionsService {
-    @Value("${bearer.token}")
-    private String token;
 
     @Value("${transactions.url.prefix}")
     private String transactionsUrlPrefix;
